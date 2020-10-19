@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html >
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Fraud Predictor</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> 
+
+  </head>
+
+  <body>
+    <div class="login">
+    	<h1>Prédiction de la fraude</h1>
+      <h3>Entrez les valeurs ci-dessous</h3>
+
+      <!-- Main Input For Receiving Query to our ML -->
+      <form action="{{ url_for('predict')}}"method="post">
+       	<input type="text" name="Step" placeholder="Step" required="required" />
+        <input type="text" name="type" placeholder="Type" required="required" />
+    	  <input type="text" name="amount" placeholder="Amount" required="required" />
+        <input type="text" name="oldbalanceOrg" placeholder="OldbalanceOrig" required="required" />
+        <input type="text" name="newbalanceOrig" placeholder="NewbalanceOrig" required="required" />
+        <input type="text" name="oldbalanceDest" placeholder="OldbalanceDest" required="required" />
+        <input type="text" name="NewbalanceDest" placeholder="NewbalanceDest" required="required" />
+
+        <button type="submit" class="btn">Prédiction</button>
+      </form>
+
+      <br>
+      <br>
+      {{ donnees_prediction }}
+      <br>
+      {{ prediction_text }}
+
+    </div>
+
+
+  </body>
+</html>
